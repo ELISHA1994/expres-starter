@@ -13,21 +13,28 @@ var _cookieParser = _interopRequireDefault(require("cookie-parser"));
 
 var _morgan = _interopRequireDefault(require("morgan"));
 
-var _index = _interopRequireDefault(require("./routes/index"));
+var _cors = _interopRequireDefault(require("cors"));
 
-var _users = _interopRequireDefault(require("./routes/users"));
+var _bodyParser = _interopRequireDefault(require("body-parser"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+// import handlers from './routes/handlers'
+var port = process.env.PORT || 1337; // App instance variables
+
 var app = (0, _express["default"])();
 app.use((0, _morgan["default"])('dev'));
+app.use((0, _cors["default"])());
 app.use(_express["default"].json());
+app.use(_bodyParser["default"].json());
 app.use(_express["default"].urlencoded({
   extended: false
 }));
 app.use((0, _cookieParser["default"])());
 app.use(_express["default"]["static"](_path["default"].join(__dirname, '../public')));
-app.use('/', _index["default"]);
-app.use('/users', _users["default"]);
+app.get('/');
+app.listen(port, function () {
+  console.log("Server started on port ".concat(port));
+});
 var _default = app;
 exports["default"] = _default;

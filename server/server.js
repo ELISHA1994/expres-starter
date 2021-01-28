@@ -5,7 +5,7 @@ import logger from 'morgan';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
-import handlers from './routes/handlers'
+// import handlers from './routes/handlers'
 
 const port = process.env.PORT || 1337
 
@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/', handlers.whateverroutehandler)
+app.get('/')
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
