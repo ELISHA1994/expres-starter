@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npm run prod",
+    "start": "yarn run prod",
     "build": "npm-run-all clean transpile",
     "server": "node ./dist-server/server.js",
     "dev": "NODE_ENV=development npm-run-all build server",
@@ -18,7 +18,7 @@
     ]
   },
   "nodemonConfig": {
-    "exec": "npm run dev",
+    "exec": "yarn run dev",
     "watch": [
       "server/*",
       "public/*"
